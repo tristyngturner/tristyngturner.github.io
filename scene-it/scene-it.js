@@ -24,12 +24,12 @@ button.addEventListener('click', function(e) {
   });
 
 
-  const mustWatch = document.getElementById('must-watch');
-  let mustWatchArray = [];
-  function saveToWatchlist(mustWatchArray, movieId) {
-    const movieToAdd = mustWatchArray.find((movie) => movie.imbdID === movieId);
-    console.log(movieToAdd);
-  }
+  // const mustWatch = document.getElementById('must-watch');
+  // let mustWatchArray = [];
+  // function saveToWatchlist(mustWatchArray, movieId) {
+  //   const movieToAdd = mustWatchArray.find((movie) => movie.imbdID === movieId);
+  //   console.log(movieToAdd);
+  // }
 
 
 
