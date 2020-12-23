@@ -5,7 +5,7 @@ const button = document.getElementById('button');
 button.addEventListener('click', function(e) {
   e.preventDefault();
   let input = document.getElementById('input').value;
-  axios.get(`http://www.omdbapi.com/?s=${input}&apikey=9211bf93`).then(function(response) {
+  axios.get(`https://www.omdbapi.com/?s=${input}&apikey=9211bf93`).then(function(response) {
     movieCards = response.data.Search;
     console.log(movieCards);
     document.getElementById('renderDiv').innerHTML = "";
