@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Exercise</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            #dog {
+                height: 300px;
+                width: 300px;
+
+            }
+            img {
+                height: 300px;
+                width: auto;
+            }
+        </style>
+</head>
+<body>
+    <div id="dog">   
+        
+    </div>
+    <select name="breed" id="breedDropDown" value="breed">
+        <option value="">select dog breed...</option>
+    </select>
+</br>
+    <button id="dogButton">
+        Generate Dog
+    </button>
+
+ 
+</body>
+<script>
+    
+const button = document.getElementById('dogButton');
+const dropDown = document.getElementById('breedDropDown');
+let breedPic = '';
+let breedArray = '';
+
+window.addEventListener('load', function() {
+        axios.get('https://dog.ceo/api/breeds/list').then(function(response) {
+        breedArray = response.data.message;
+        getBreed();
+    });
+});
+
+function getBreed() {
+        breedArray.forEach(function(item) {
+        dropDown.innerHTML += `<option>${item}</option>`
+    })
+}
+
+dropDown.onchange = function() {
+    breedPic = this.value;
+    // console.log(breedPic);
+}
+
+button.addEventListener('click', function() {
+        button.innerHTML = "Puppy on the way!"
+        axios.get(`https://dog.ceo/api/breed/${breedPic}/images/random`).then(function(response) {
+        document.getElementById('dog').innerHTML = `<img src=${response.data.message}>`
+        button.innerHTML = "Generate Another Adorable Dog"; 
+    });
+});
+
+</script>
+</html>
+
+<!-- const button = document.getElementById('dogButton');
+let breedPic = '';
+    button.addEventListener('click', function() {
+        button.innerHTML = "Puppy on the way!"
+        axios.get('https://dog.ceo/api/breeds/image/random').then(function(response) {
+        document.getElementById('dog').innerHTML = `<img src=${response.data.message}>`
+        button.innerHTML = "Generate Another Adorable Dog"; 
+    });
+}); THIS WAS TO GENERATE A RANDOM DOG! NOT BREED SPECIFIC -->

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises Exercise</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    var urls = [
+  'https://dog.ceo/api/breed/beagle/images/random',
+  'https://dog.ceo/api/breed/chow/images/random',
+  'https://dog.ceo/api/breed/akita/images/random',
+  'https://dog.ceo/api/breed/dingo/images/random',
+  'https://dog.ceo/api/breed/eskimo/images/random'
+];
+
+
+axios.get(urls[0]).then(function(response1) {
+    console.log('Data was fetched')      
+    axios.get(urls[1]).then(function(response2) {
+        console.log('Data was fetched')
+        axios.get(urls[2]).then(function(response3) {
+            console.log('Data was fetched')
+            axios.get(urls[3]).then(function(response4) {
+                console.log('Data was fetched')
+                axios.get(urls[4]).then(function(response5) {
+                    console.log('Data was fetched')
+                    console.log('Data Fetched')
+                });
+            });
+        });
+    });
+});
+
+
+        var p1 = axios.get(urls[0]);
+        var p2 = axios.get(urls[1]);
+        var p3 = axios.get(urls[2]);
+        var p4 = axios.get(urls[3]);
+        var p5 = axios.get(urls[4]);
+
+        Promise.all([p1, p2, p3, p4, p5]).then(function(responses) {
+            console.log(responses);
+            console.log('done')
+        })
+
+
+
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What have you scene?</title>
+
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        const mustWatch = document.getElementById('must-watch');
+        let mustWatchArray = [];
+        axios.get(`http://www.omdbapi.com/?s=${this.value}&apikey=9211bf93`).then(function(response) {
+        //this.value when you click on the button it gets the imdbID??
+            function saveToWatchList() {
+            mustWatchArray.push(response.data.Search.object);
+            console.log(mustWatchArray);
+      }
+    });
+    </script>
+    <div id="header" class="container-fluid">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4 text-center">
+            <h1 class="header" id="mainHeader">Scene It</h1>
+            <h6 class="header">Search for movies you want</h6>
+            <h6 class="header">Save them to your watch list</h6>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    <div>
+        <nav class="navbar">
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" id="input" type="search" placeholder="" aria-label="Search">
+            <button class="btn my-2 my-sm-0" id="button" type="submit">Search</button>
+            <button class="btn my-2 ml-sm-2" id="myWatchList">My Watch List</button>
+        </form>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center align-items-center" id="renderDiv">
+        <p>Search for it.</p>
+
+    </div>
+    <div class="footer">
+        <footer>
+            <p>Scene It App</p>
+            <p>email@email.com</p>
+            <p>777-777-7777</p>
+        </footer>
+    </div>
+<script src="./scene-it.js"></script>
+</body>
+</html>

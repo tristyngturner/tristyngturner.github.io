@@ -1,0 +1,65 @@
+
+body {
+    color: #E98074;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #EAE7DC;
+    margin: 10px;
+}
+.container-fluid {
+    color: #E98074;
+    /* background-color: #EAE7DC; */
+}
+
+#mainHeader {
+    font-family: 'Monoton', cursive;
+}
+
+.header {
+    color: #E98074; 
+}
+
+
+.navbar {
+    background-color: #D8C3A5;
+}
+
+#input {
+    color: #E98074;
+    background-color: #EAE7DC;  
+    border: #EAE7DC;   
+}
+
+.btn {
+    color: #E98074;
+    background-color: #EAE7DC;  
+}
+
+.btn:hover, #must-watch:hover {
+    color: #E85A4F;
+}
+
+#renderDiv {
+    height: 600px;
+    width: auto;
+    overflow: scroll;
+}
+
+.card {
+    background-color: #EAE7DC;
+    margin: 15px;
+    padding: 5px;
+    border: 2px ridge #E98074;
+}
+
+#must-watch {
+    color: #EAE7DC;
+    background-color: #E98074;
+}
+
+img {
+    overflow: hidden;
+}
+
+.footer {
+    background-color: #EAE7DC;
+}

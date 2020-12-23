@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Super Epic Tic Tac Toe</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+      button {
+          width: 50px;
+          height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Game">
+      <h1>Tic Tac Toe</h1>
+      <h2>It is payer <span id="playerTurn"></span>s Turn</h2>
+      <div id="board">
+        
+      </div>
+      <div id="winner">
+      </div>
+
+    </div>
+
+    <script>
+      let playerTurn = Math.random() > 0.5 ? 'X' : 'O';
+      let board = [
+        ["-","-","-"], // row 1
+        ["-","-","-"], // row 2
+        ["-","-","-"], // row 3
+      ];
+      let playerHTML = document.getElementById('playerTurn');
+      playerHTML.innerHTML = playerTurn;
+
+
+      function renderBoard(board) {
+        let htmlBoard = "";
+        
+        // console.log(board);
+        board.forEach(function (row, rowIndex) {
+          // console.log(row);
+          htmlBoard += `<div class="row">`
+
+            row.forEach(function (cell, columnIndex){
+              console.log(cell);
+              htmlBoard += `<button row="${rowIndex}" column="${columnIndex}" class="square">${cell}</button>`
+            });
+
+          htmlBoard += `</div>`
+        });
+
+        return htmlBoard;
+      }
+
+      function doSomething(event) {
+        // console.log(event);
+        if(event.target.innerHTML !== '-') {
+          alert('player tried to cheat');
+          return;
+        }
+        
+        event.target.innerHTML = playerTurn == 'X' ? `<i class="fab fa-xbox"></i>` : `<i class="fab fa-opera"></i>`;
+        board[event.target.getAttribute('row')][event.target.getAttribute('column')] = playerTurn;
+
+        if(hasWon()){
+          return
+        }
+
+        playerTurn = playerTurn == 'X' ? 'O' : 'X';
+        playerHTML.innerHTML = playerTurn == 'X' ? `<i class="fab fa-xbox"></i>` : `<i class="fab fa-opera"></i>`;
+        // console.log(board);
+        // console.log('inside do something');
+      }
+
+      function hasWon(){
+        console.log('check winner');
+        let declaredWinner = document.getElementById('winner');
+        
+        /**
+        row 1 are equal
+        row 2 are equal
+        row 3 are equal
+        column 1 equal
+        column 2 equal
+        column 3 equal
+        2 diagonals
+        */
+
+        if(
+            ( 
+              (board[0][0] === board[0][1]) && 
+              (board[0][1] === board[0][2]) && 
+              (board[0][2] !== '-')
+            ) 
+            ||
+            (
+              (board[0][0] === board[1][1]) && 
+              (board[1][1] === board[2][2]) && 
+              (board[2][2] !== '-')
+            )
+          ) {
+          declaredWinner.innerHTML = `${playerTurn} has won the game`
+          return true;
+        }
+      }
+
+      document.getElementById('board').innerHTML = renderBoard(board);
+
+      let buttons = document.getElementsByClassName("square");
+
+      for (var x = 0; x< buttons.length ; x++) {
+        buttons[x].addEventListener("click", doSomething);
+      }
+    </script>
+  </body>
+</html>
