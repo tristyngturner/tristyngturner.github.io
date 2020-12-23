@@ -1,3 +1,5 @@
+
+
 const button = document.getElementById('button');
 
 button.addEventListener('click', function(e) {
@@ -21,7 +23,7 @@ button.addEventListener('click', function(e) {
         </div>`
         });      
       });
-  });
+    });
 
 
   // const mustWatch = document.getElementById('must-watch');
@@ -30,6 +32,8 @@ button.addEventListener('click', function(e) {
   //   const movieToAdd = mustWatchArray.find((movie) => movie.imbdID === movieId);
   //   console.log(movieToAdd);
   // }
+
+  //comment for github
 
 
 
